@@ -18,7 +18,7 @@ import java.util.Map;
  * 2. 返回的是下标数组，不是值。
  * 3. 这题用 HashMap 而不是 HashSet，因为要记下标。
  */
-class Solution {
+class SolutionHashMap {
 
     public int[] twoSum(int[] nums, int target) {
         // 值 -> 下标
@@ -37,7 +37,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        Solution s = new Solution();
+        SolutionHashMap s = new SolutionHashMap();
 
         int[] r1 = s.twoSum(new int[] { 2, 7, 11, 15 }, 9);
         System.out.println(r1[0] + ", " + r1[1] + "  (期望 0, 1)");
