@@ -1,0 +1,39 @@
+package xiaok;
+
+import java.util.Random;
+
+/*统计个数
+学校选举学生会主席,有5个候选人
+全校1000名同学参与投票(每人一票,可以弃权,或者选1-5号)。
+投票使用Random模拟。0:弃权,1~5:给对应的候选人投票
+
+要求1:
+统计每个候选人的得票数和得票率,找出得票最多的候选人?
+要求2:
+统计弃票数和弃票率是多少?
+*/
+public class helloworld {
+    public static void main(String[] args)
+    {
+        // arr[0]存弃票数, arr[1]~arr[5]存1~5号候选人的得票数
+        int[] arr = new int[6];
+        Random r = new Random();
+        for (int i = 0; i < 1000; i++) {
+            int v = r.nextInt(0,6); // 0:弃权, 1~5:投给对应编号的候选人
+            arr[v]++;
+        }
+
+        // 要求1:统计每个候选人的得票数和得票率,并找出得票最多的人
+        int maxIndex = 1; // 先假设1号得票最多
+        for (int i = 1; i < arr.length; i++) {
+            System.out.println("候选人"+i+"得票数为"+arr[i]+",得票率为"+arr[i]/10.0+"%");
+            if (arr[i] > arr[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+        System.out.println("得票最多的候选人是"+maxIndex+"号,票数"+arr[maxIndex]+",得票率"+arr[maxIndex]/10.0+"%");
+
+        // 要求2:统计弃票数和弃票率
+        System.out.println("弃票数为"+arr[0]+",弃票率为"+arr[0]/10.0+"%");
+    }
+}
