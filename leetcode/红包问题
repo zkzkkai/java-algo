@@ -1,1 +1,42 @@
+/*题目：
+给你两个整数M,N。M表示红包总额，N表示红包个数
+N个人来抽红包，每个人都是随机的
+
+注意：没个人至少一分钱，每个人领完红包后至少预留1*N分钱
+*/
+package xiaok;
+
+import java.util.Random;
+import java.util.Scanner;
+
+
+public class helloworld {
+    public static void main(String[] args)
+    {
+       int M,N;
+       Scanner sc = new Scanner(System.in);
+       M = sc.nextInt();
+       N = sc.nextInt();
+       // 校验：总额不够每人1分钱时无法分配
+       if (M < N) {
+           System.out.println("红包总额不足，每人至少需要1分钱");
+           return;
+       }
+       //利用循环来抽取红包
+        Random r = new Random();
+       // 最后一个人直接拿剩下的，所以只让前 N-1 个人抽
+       for(int i=0;i<N-1;i++)
+       {
+           //利用random随机抽取 1 2 3 4 表示第几个人抽取假设五个人最后一个是分配的所以不用
+           //                  4 3 2 1 表示要预留的钱
+           //                  第一个人抽取红包（20000-5+1）=19996，因为此时random是0-19995故+1
+          int myRed = r.nextInt(M-(N-i-1))+1;
+          M-=myRed;
+          System.out.println("第"+(i+1)+"个人抽到的红包是"+myRed);
+       }
+    //输出最后一个人抢到的钱
+    System.out.println("最后一个人抢到的钱是"+M);
+
+    }
+}
 
